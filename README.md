@@ -35,7 +35,7 @@ A simple 2D web game built with **HTML**, **CSS**, and **JavaScript**. Help **Lu
 
 ---
 
-### 📚 Skills Practiced
+### 📚 Skills Practised
 
 * DOM Selection & Events
 * CSS Positioning & Animations
@@ -58,12 +58,6 @@ A simple 2D web game built with **HTML**, **CSS**, and **JavaScript**. Help **Lu
 
 *(Add a screenshot here if available)*
 
----
-
-### 👨‍💻 Author
-
-Made with 💙 by \[Your Name]
-\[GitHub Profile Link]
 
 ---
 
