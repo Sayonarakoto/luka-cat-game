@@ -1,0 +1,95 @@
+/* Spritesheet animation states */
+.luka.idle {
+    background-image: url("../../assets/cat sprite/craftpix-net-610575-free-street-animal-pixel-art-asset-pack/4 Cat 2/Idle.png");
+    background-size: 384px 96px; /* 4 frames * 96px = 384px */
+    animation: luka-idle 0.6s steps(4) infinite;
+}
+
+.luka.walk {
+    background-image: url("../../assets/cat sprite/craftpix-net-610575-free-street-animal-pixel-art-asset-pack/4 Cat 2/Walk.png");
+    background-size: 576px 96px; /* 6 frames * 96px = 576px */
+    animation: luka-walk 0.5s steps(6) infinite;
+}
+
+.luka.hurt {
+    background-image: url("../../assets/cat sprite/craftpix-net-610575-free-street-animal-pixel-art-asset-pack/4 Cat 2/Hurt.png");
+    background-size: 192px 96px; /* 2 frames * 96px = 192px */
+    animation: luka-hurt 0.25s steps(2) infinite;
+}
+
+.luka.death {
+    background-image: url("../../assets/cat sprite/craftpix-net-610575-free-street-animal-pixel-art-asset-pack/4 Cat 2/Death.png");
+    background-size: 384px 96px; /* 4 frames * 96px = 384px */
+    animation: luka-death 0.9s steps(4) forwards; /* Plays once and freezes */
+}
+
+/* Keyframes for spritesheets (X offset shifts) */
+@keyframes luka-idle {
+    from { background-position: 0px 0px; }
+    to { background-position: -384px 0px; }
+}
+
+@keyframes luka-walk {
+    from { background-position: 0px 0px; }
+    to { background-position: -576px 0px; }
+}
+
+@keyframes luka-hurt {
+    from { background-position: 0px 0px; }
+    to { background-position: -192px 0px; }
+}
+
+/* Death animation with a smooth pixel-art tumble rotation */
+@keyframes luka-death {
+    0% { 
+        background-position: 0px 0px; 
+        transform: scaleX(-1) rotate(0deg); 
+    }
+    33% { 
+        background-position: -96px 0px; 
+        transform: scaleX(-1) rotate(-15deg); 
+    }
+    66% { 
+        background-position: -192px 0px; 
+        transform: scaleX(-1) rotate(-45deg) translateY(5px); 
+    }
+    100% { 
+        background-position: -288px 0px; 
+        transform: scaleX(-1) rotate(-90deg) translateY(12px) translateX(-5px); 
+    }
+}
+
+/* Screen shake effect on damage */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.hit-shake {
+    animation: shake 0.3s ease;
+}
+
+/* Swim fish animation */
+.swim-fish {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    z-index: 8;
+    animation: fish-swim-cycle 0.5s steps(4) infinite;
+}
+
+@keyframes fish-swim-cycle {
+    from { background-position: 0px 0px; }
+    to { background-position: -256px 0px; }
+}

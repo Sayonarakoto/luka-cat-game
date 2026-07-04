@@ -3,21 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Luka Cat Game - Retro Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="css/app.css">
 </head>
-
 <body>
-    <div class="score">Fish collected:0</div>
-    <div class="game-container">
-        <div class="platform"></div>
-                <div class="luka"> </div>
-        <div class="fish"></div>
-    </div>
     <div class="for-button">
-    <button class="btn btn-success"type="button">Start</button></div>
-    <script src="script.js" defer></script>
-</body>
+        <div id="gameContainer" class="game-container nes-container with-title">
+            <p class="title">Luka's Adventure</p>
+            
+            <!-- Parallax Layers -->
+            <div class="parallax-layer layer-sky"></div>
+            <div class="parallax-layer layer-clouds"></div>
+            <div class="parallax-layer layer-rocks"></div>
+            <div class="parallax-layer layer-hills2"></div>
+            <div class="parallax-layer layer-hills1"></div>
+            <div class="parallax-layer layer-trees"></div>
+            <div class="platform"></div>
+            <div id="flash-effect" class="flash-effect"></div>
 
+            <!-- HUD (Heads-Up Display) -->
+            <div id="hud">
+                <div id="score" class="nes-text is-primary">Score: 0</div>
+                <div id="highScore" class="nes-text is-warning">Hi-Score: 0</div>
+                <div id="lives" class="nes-text is-error">
+                    <i class="nes-icon heart"></i>
+                    <i class="nes-icon heart"></i>
+                    <i class="nes-icon heart"></i>
+                </div>
+            </div>
+
+            <!-- Characters/Objects -->
+            <div id="luka" class="luka idle"></div>
+            <div id="entities"></div>
+
+            <!-- On-screen controller buttons -->
+            <div class="game-controls">
+                <button id="btnLeft" class="nes-btn is-primary">◀</button>
+                <button id="btnJump" class="nes-btn is-success">JUMP</button>
+                <button id="btnRight" class="nes-btn is-primary">▶</button>
+            </div>
+
+            <!-- Start / Game Over Screen Overlay -->
+            <div id="screen-overlay" class="screen-overlay">
+                <div id="start-screen" class="screen-content animate__animated animate__fadeIn">
+                    <h2 class="animate__animated animate__bounceIn">Luka's Adventure</h2>
+                    <p class="nes-text is-disabled">Catch fish, avoid hazards!</p>
+                    
+                    <!-- Background Selector Layout -->
+                    <div class="bg-selector-container nes-container is-rounded" style="background-color: rgba(255,255,255,0.8); padding: 10px 15px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center;">
+                        <p class="nes-text" style="font-size: 0.6em; margin-bottom: 8px; color: #212529;">Select Stage:</p>
+                        
+                        <!-- Map Preview Frame -->
+                        <div id="mapPreviewCard" style="width: 200px; height: 100px; margin-bottom: 12px; border: 3px solid #212529; border-radius: 4px; position: relative; overflow: hidden; background-color: #2c3e50; box-shadow: 2px 2px 0px rgba(0,0,0,0.15);">
+                            <div id="miniSky" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; image-rendering: pixelated;"></div>
+                            <div id="miniGround" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 25px; background-repeat: repeat-x; background-size: auto 100%; image-rendering: pixelated;"></div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                            <button id="prevBgBtn" type="button" class="nes-btn is-primary is-small" style="padding: 2px 8px; font-size: 0.6em;">◀</button>
+                            <span id="bgName" class="nes-text" style="font-size: 0.55em; min-width: 180px; text-align: center; color: #212529;">Green Hills (BG 3)</span>
+                            <button id="nextBgBtn" type="button" class="nes-btn is-primary is-small" style="padding: 2px 8px; font-size: 0.6em;">▶</button>
+                        </div>
+                    </div>
+
+                    <p class="nes-text is-success" style="font-size: 0.6em; margin-bottom: 15px;">Left/Right to choose. Space/Enter to Start.</p>
+                    <button id="startGameBtn" type="button" class="nes-btn is-success">Start Game</button>
+                </div>
+                <div id="game-over-screen" class="screen-content" style="display: none;">
+                    <h2 class="nes-text is-error animate__animated animate__flash">Game Over</h2>
+                    <p id="final-score" class="nes-text">Score: 0</p>
+                    <button id="restartGameBtn" type="button" class="nes-btn is-primary">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/script.js"></script>
+</body>
 </html>
